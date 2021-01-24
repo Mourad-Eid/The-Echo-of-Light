@@ -817,8 +817,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1189839685}
   - component: {fileID: 1189839684}
-  - component: {fileID: 1189839683}
   - component: {fileID: 1189839682}
+  - component: {fileID: 1189839683}
   - component: {fileID: 1189839681}
   m_Layer: 0
   m_Name: player2
