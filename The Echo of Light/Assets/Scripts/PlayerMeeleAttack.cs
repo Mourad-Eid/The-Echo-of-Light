@@ -7,17 +7,27 @@ public class PlayerMeeleAttack : MonoBehaviour
     [SerializeField] PlayerInput input;
     [SerializeField] GameObject attackBox;
     [SerializeField] int hitRate =1;
+    [SerializeField] float attackTime;
     private float lastHitTime;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        input.playerActionControls.Land.MeleeHit.performed += _ => AttackMelee();
     }
 
-    // Update is called once per frame
-    void Update()
+    void AttackMelee()
     {
-        
+        if (Time.time > (1 / hitRate) + lastHitTime)
+        {
+            StartCoroutine(Attack(attackTime));
+        }
+    }
+    IEnumerator Attack(float attackTime)
+    {
+        attackBox.SetActive(true);
+        yield return new WaitForSeconds(attackTime);
+        attackBox.SetActive(false);
     }
 }
