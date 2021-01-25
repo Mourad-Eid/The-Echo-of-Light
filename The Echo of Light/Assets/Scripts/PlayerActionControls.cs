@@ -33,6 +33,30 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""afdde981-cab2-4017-9157-ae9f467ecfc1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d5fdd8b0-604e-4b6c-8fda-f69f356524ae"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MeleeHit"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6cb3418f-131b-4506-b138-acf868221bb8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -79,6 +103,39 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1e1b0d5-2075-49d8-aa8f-a018ed7659d1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4490fdff-f1fb-4bd6-b2e3-46f8d8511465"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""910a174d-9d30-4b85-9078-263022704407"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeHit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +146,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         m_Land = asset.FindActionMap("Land", throwIfNotFound: true);
         m_Land_Walk = m_Land.FindAction("Walk", throwIfNotFound: true);
         m_Land_Jump = m_Land.FindAction("Jump", throwIfNotFound: true);
+        m_Land_Shoot = m_Land.FindAction("Shoot", throwIfNotFound: true);
+        m_Land_MousePosition = m_Land.FindAction("MousePosition", throwIfNotFound: true);
+        m_Land_MeleeHit = m_Land.FindAction("MeleeHit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,12 +200,18 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     private ILandActions m_LandActionsCallbackInterface;
     private readonly InputAction m_Land_Walk;
     private readonly InputAction m_Land_Jump;
+    private readonly InputAction m_Land_Shoot;
+    private readonly InputAction m_Land_MousePosition;
+    private readonly InputAction m_Land_MeleeHit;
     public struct LandActions
     {
         private @PlayerActionControls m_Wrapper;
         public LandActions(@PlayerActionControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_Land_Walk;
         public InputAction @Jump => m_Wrapper.m_Land_Jump;
+        public InputAction @Shoot => m_Wrapper.m_Land_Shoot;
+        public InputAction @MousePosition => m_Wrapper.m_Land_MousePosition;
+        public InputAction @MeleeHit => m_Wrapper.m_Land_MeleeHit;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -161,6 +227,15 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_LandActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnJump;
+                @Shoot.started -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
+                @MousePosition.started -= m_Wrapper.m_LandActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnMousePosition;
+                @MeleeHit.started -= m_Wrapper.m_LandActionsCallbackInterface.OnMeleeHit;
+                @MeleeHit.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnMeleeHit;
+                @MeleeHit.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnMeleeHit;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -171,6 +246,15 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+                @MeleeHit.started += instance.OnMeleeHit;
+                @MeleeHit.performed += instance.OnMeleeHit;
+                @MeleeHit.canceled += instance.OnMeleeHit;
             }
         }
     }
@@ -179,5 +263,8 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnMeleeHit(InputAction.CallbackContext context);
     }
 }
