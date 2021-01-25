@@ -5,7 +5,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerActionControls playerActionControls;
+    [SerializeField] PlayerInput input;
     [SerializeField] Rigidbody2D rb2d;
     [SerializeField] int speed=5;
     private float movementInput;
@@ -24,27 +24,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float linearDrag = 4f;
     [SerializeField] float gravity = 1f;
     [SerializeField] float fallMultiplier = 5f;
-    private void Awake()
-    {
-        playerActionControls = new PlayerActionControls();
-    }
-    private void OnEnable()
-    {
-        playerActionControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerActionControls.Disable();
-    }
+    
     void Start()
     {
-        playerActionControls.Land.Jump.performed += _ => Jump();
+        input.playerActionControls.Land.Jump.performed += _ => Jump();
     }
 
     void Update()
     {
         //movement
-        movementInput=playerActionControls.Land.Walk.ReadValue<float>();
+        movementInput=input.playerActionControls.Land.Walk.ReadValue<float>();
         //jump condition
         onGround = Physics2D.Raycast(transform.position + colliderOffsetRight, Vector2.down, groundLength, groundLayer)
             || Physics2D.Raycast(transform.position - colliderOffsetLeft, Vector2.down, groundLength, groundLayer);
