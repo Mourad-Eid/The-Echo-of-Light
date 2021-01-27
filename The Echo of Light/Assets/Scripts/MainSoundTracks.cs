@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSoundTracks : MonoBehaviour
+public class MainSoundTracks : MonoBehaviour
 {
     AudioSource mainTrack;
     void Start()
