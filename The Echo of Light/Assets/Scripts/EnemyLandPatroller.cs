@@ -13,6 +13,13 @@ public class EnemyLandPatroller : MonoBehaviour
     [Header("Sight and Range")]
     [SerializeField] float rangeRadius;
     [SerializeField] LayerMask playerLayer;
+
+    [SerializeField] AudioClip walkingSound;
+    [SerializeField] AudioClip chasingSound;
+    [SerializeField] AudioSource sounds;
+    bool playWalking = false;
+    bool playChasing = false;
+
     void Start()
     {
     }
@@ -24,9 +31,13 @@ public class EnemyLandPatroller : MonoBehaviour
         if (collision)
         {
             ChasePlayer(collision);
+            playWalking = false;
         }
         else
+        {
+            playChasing = false;
             Patrol();
+        }
     }
 
     void MoveToTarget(Transform target)
@@ -43,6 +54,13 @@ public class EnemyLandPatroller : MonoBehaviour
 
     void Patrol()
     {
+        playChasing = false;
+        if (playWalking == false)
+        {
+            sounds.clip = walkingSound;
+            sounds.Play();
+            playWalking = true;
+        }
         if (InsideBoundaries())
         {
             if (facingRight)
@@ -68,6 +86,14 @@ public class EnemyLandPatroller : MonoBehaviour
     void ChasePlayer(Collider2D hitInfo)
     {
         if (hitInfo.tag == "Player")
+        {
+            if (playChasing == false)
+            {
+                sounds.clip = chasingSound;
+                sounds.Play();
+                playChasing = true;
+            }
+        }
             MoveToTarget(hitInfo.transform);
     }
     void Flip()

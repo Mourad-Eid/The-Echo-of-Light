@@ -13,9 +13,15 @@ public class EnemyAirPatroller : MonoBehaviour
     [Header("Sight and Range")]
     [SerializeField] float rangeRadius;
     [SerializeField] LayerMask playerLayer;
-  
+    [SerializeField] AudioClip flyingSound;
+    [SerializeField] AudioClip chasingSound;
+    [SerializeField] AudioSource sounds;
+    bool playFlying = false;
+    bool playChasing = false;
+
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -25,9 +31,13 @@ public class EnemyAirPatroller : MonoBehaviour
         if (collision)
         {          
             ChasePlayer(collision);
+            playFlying = false;
         }
         else
+        {
+            playChasing = false;
             Patrol();
+        }
     }
 
     void MoveToTarget(Transform target)
@@ -43,6 +53,13 @@ public class EnemyAirPatroller : MonoBehaviour
 
     void Patrol()
     {
+        playChasing = false;
+        if (playFlying == false)
+        {
+            sounds.clip = flyingSound;
+            sounds.Play();
+            playFlying = true;
+        }
         if (InsideBoundaries())
         {
             if (facingRight)
@@ -68,7 +85,15 @@ public class EnemyAirPatroller : MonoBehaviour
     void ChasePlayer(Collider2D hitInfo)
     {
         if (hitInfo.tag == "Player")
+        {
+            if (playChasing == false)
+            {
+                sounds.clip = chasingSound;
+                sounds.Play();
+                playChasing = true;
+            }
             MoveToTarget(hitInfo.transform);
+        }
     }
     void Flip()
     {
