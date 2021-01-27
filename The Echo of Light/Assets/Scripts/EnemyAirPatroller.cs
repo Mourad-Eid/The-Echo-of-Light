@@ -23,8 +23,7 @@ public class EnemyAirPatroller : MonoBehaviour
     {
         Collider2D collision = Physics2D.OverlapCircle(transform.position, rangeRadius, playerLayer);
         if (collision)
-        {
-            Debug.Log(collision.name);
+        {          
             ChasePlayer(collision);
         }
         else

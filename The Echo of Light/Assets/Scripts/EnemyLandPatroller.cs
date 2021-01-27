@@ -20,7 +20,6 @@ public class EnemyLandPatroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //RaycastHit2D hitInfo = Physics2D.Raycast(transform.position+lineOfSightOffset, transform.right, sightRange,playerLayer);
         Collider2D collision = Physics2D.OverlapCircle(transform.position, rangeRadius, playerLayer);
         if (collision)
         {
