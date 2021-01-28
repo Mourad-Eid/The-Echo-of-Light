@@ -13,20 +13,30 @@ public class EnemyAirPatroller : MonoBehaviour
     [Header("Sight and Range")]
     [SerializeField] float rangeRadius;
     [SerializeField] LayerMask playerLayer;
+
+    [Header("Sound")]
+    [SerializeField] float soundRadius;
     [SerializeField] AudioClip flyingSound;
     [SerializeField] AudioClip chasingSound;
     [SerializeField] AudioSource sounds;
+    float soundVolume=0;
     bool playFlying = false;
     bool playChasing = false;
 
     void Start()
     {
         sounds.volume = 0;
+        EventManager.current.onChangeSound += OnSoundVolumeChange;
     }
 
+    private void OnDestroy()
+    {
+        EventManager.current.onChangeSound -= OnSoundVolumeChange;
+    }
     // Update is called once per frame
     void Update()
     {
+        //chasing and patrolling
         Collider2D collision = Physics2D.OverlapCircle(transform.position, rangeRadius, playerLayer);
         if (collision)
         {          
@@ -38,6 +48,18 @@ public class EnemyAirPatroller : MonoBehaviour
             playChasing = false;
             Patrol();
         }
+
+        //sound handling
+        Collider2D soundField = Physics2D.OverlapCircle(transform.position, soundRadius, playerLayer);
+        if (soundField)
+        {
+            sounds.volume = soundVolume; 
+        }
+        else 
+        { 
+            sounds.volume = 0;
+        }
+
     }
 
     void MoveToTarget(Transform target)
@@ -124,11 +146,17 @@ public class EnemyAirPatroller : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, rangeRadius);
+        Gizmos.DrawWireSphere(transform.position, soundRadius);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
             sounds.volume = 0;
+    }
+
+    void OnSoundVolumeChange(float newSoundVolume)
+    {
+        soundVolume = newSoundVolume;
     }
 }

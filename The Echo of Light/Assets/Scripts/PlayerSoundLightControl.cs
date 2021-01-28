@@ -10,51 +10,25 @@ public class PlayerSoundLightControl : MonoBehaviour
     [Header("Light")]
     [SerializeField] Light2D lightSource;
     [Header("Sound")]
-    [SerializeField] float soundDetectionRadius;
     float currentSoundVolume;
     [Header("Detection")]
     [SerializeField] LayerMask enemyLayer;
-
     [SerializeField] Slider slider;
 
 
-    void Start()
-    {
-        
-    }
 
-    
-    void Update()
-    {
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, soundDetectionRadius, enemyLayer);
-        if (collisions.Length >= 0)
-        {
-            UpdateSoundVolume(collisions);
-        }
-    }
-
-    void UpdateSoundVolume(Collider2D[] collisions)
-    {
-        foreach (Collider2D col in collisions)
-        {
-            col.GetComponent<AudioSource>().volume = currentSoundVolume;
-        }
-    
-    }
-
-    public void UpdateLightandSound()
+    public void UpdateLight()
     {
         //update Light
         int sliderValue = (int)slider.value-1;
         lightSource.pointLightInnerRadius = levels[sliderValue].InnerRadius;
         lightSource.pointLightOuterRadius = levels[sliderValue].OuterRadius;
-        //update sound volume
-        currentSoundVolume = levels[sliderValue].SoundVolume;
     }
 
-    private void OnDrawGizmos()
+    public void UpdateSound()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, soundDetectionRadius);
+        int sliderValue = (int)slider.value - 1;
+        EventManager.current.ChangeSound(levels[sliderValue].SoundVolume);
     }
+
 }
