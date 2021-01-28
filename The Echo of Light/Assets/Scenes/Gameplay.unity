@@ -2481,26 +2481,6 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 968986090}
-    - target: {fileID: 1648902414, guid: 9c0641e3f2cca254a9633edf3f08f789, type: 3}
-      propertyPath: soundDetectionRadius
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1648902414, guid: 9c0641e3f2cca254a9633edf3f08f789, type: 3}
-      propertyPath: levels.Array.data[0].soundVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1648902414, guid: 9c0641e3f2cca254a9633edf3f08f789, type: 3}
-      propertyPath: levels.Array.data[1].soundVolume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1648902414, guid: 9c0641e3f2cca254a9633edf3f08f789, type: 3}
-      propertyPath: levels.Array.data[3].soundVolume
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1648902414, guid: 9c0641e3f2cca254a9633edf3f08f789, type: 3}
-      propertyPath: levels.Array.data[4].soundVolume
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1796023993521998475, guid: 9c0641e3f2cca254a9633edf3f08f789,
         type: 3}
       propertyPath: m_Name
@@ -2559,11 +2539,6 @@ PrefabInstance:
     - target: {fileID: 1796023993521998478, guid: 9c0641e3f2cca254a9633edf3f08f789,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2506343298894614715, guid: 9c0641e3f2cca254a9633edf3f08f789,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

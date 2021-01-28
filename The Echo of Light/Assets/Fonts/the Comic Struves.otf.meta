@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3cc8223773ac5a64788661b2759b610c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: the Comic Struves
+  fontNames:
+  - the Comic Struves
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 74204bd96c9a9ef4281101d3057ebbce, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

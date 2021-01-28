@@ -9,8 +9,7 @@ public class PlayerSoundLightControl : MonoBehaviour
     [SerializeField] SensesLevel[] levels;
     [Header("Light")]
     [SerializeField] Light2D lightSource;
-    [Header("Sound")]
-    float currentSoundVolume;
+  
     [Header("Detection")]
     [SerializeField] LayerMask enemyLayer;
     [SerializeField] Slider slider;
@@ -28,7 +27,7 @@ public class PlayerSoundLightControl : MonoBehaviour
     public void UpdateSound()
     {
         int sliderValue = (int)slider.value - 1;
-        EventManager.current.ChangeSound(levels[sliderValue].SoundVolume);
+        EventManager.current.ChangeSound(levels[sliderValue].SoundRadius);
     }
 
 }

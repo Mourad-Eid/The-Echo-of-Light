@@ -27,12 +27,12 @@ public class EnemyLandPatroller : MonoBehaviour
     void Start()
     {
         sounds.volume = 0;
-        EventManager.current.onChangeSound += OnSoundVolumeChange;
+        EventManager.current.onChangeSound += OnSoundRadiusChange;
     }
 
     private void OnDestroy()
     {
-        EventManager.current.onChangeSound -= OnSoundVolumeChange;
+        EventManager.current.onChangeSound -= OnSoundRadiusChange;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class EnemyLandPatroller : MonoBehaviour
         Collider2D soundField = Physics2D.OverlapCircle(transform.position, soundRadius, playerLayer);
         if (soundField)
         {
-            sounds.volume = soundVolume;
+            sounds.volume = 0.6f;
         }
         else
         {
@@ -156,8 +156,8 @@ public class EnemyLandPatroller : MonoBehaviour
         if (collision.tag == "Player")
             sounds.volume = 0;
     }
-    void OnSoundVolumeChange(float newSoundVolume)
+    void OnSoundRadiusChange(float newSoundRadius)
     {
-        soundVolume = newSoundVolume;
+        soundRadius = newSoundRadius;
     }
 }

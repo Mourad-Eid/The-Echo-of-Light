@@ -10,9 +10,9 @@ public class SensesLevel
     [SerializeField] float outerRadius;
 
     [Header("Sound")]
-    [SerializeField] float soundVolume;
+    [SerializeField] float soundRadius;
 
     public float InnerRadius => innerRdius;
     public float OuterRadius => outerRadius;
-    public float SoundVolume => soundVolume;
+    public float SoundRadius => soundRadius;
 }

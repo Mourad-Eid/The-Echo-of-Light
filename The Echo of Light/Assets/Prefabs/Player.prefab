@@ -309,21 +309,20 @@ MonoBehaviour:
   levels:
   - innerRdius: 1
     outerRadius: 1.5
-    soundVolume: 0.2
+    soundRadius: 10
   - innerRdius: 2
     outerRadius: 2.5
-    soundVolume: 0.4
+    soundRadius: 8
   - innerRdius: 3
     outerRadius: 3.5
-    soundVolume: 0.6
+    soundRadius: 6
   - innerRdius: 4
     outerRadius: 4.5
-    soundVolume: 0.8
+    soundRadius: 4
   - innerRdius: 5
     outerRadius: 5.5
-    soundVolume: 1
+    soundRadius: 2
   lightSource: {fileID: 1796023992570062239}
-  soundDetectionRadius: 12
   enemyLayer:
     serializedVersion: 2
     m_Bits: 4096
@@ -429,6 +428,7 @@ MonoBehaviour:
   firingPosition: {fileID: 8631673996215969482}
   offset: 0
   bulletForce: 15
+  rotateToNormalSpeed: 0
 --- !u!1 &8281556595692109817
 GameObject:
   m_ObjectHideFlags: 0
