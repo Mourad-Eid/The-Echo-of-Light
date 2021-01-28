@@ -57,6 +57,14 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""TriggerShooting"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""f2a4e056-1e57-4477-b20e-06c1d341629b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -136,6 +144,17 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                     ""action"": ""MeleeHit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b030166-2a7c-43a3-bc5a-97ccc22090b0"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerShooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -149,6 +168,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         m_Land_Shoot = m_Land.FindAction("Shoot", throwIfNotFound: true);
         m_Land_MousePosition = m_Land.FindAction("MousePosition", throwIfNotFound: true);
         m_Land_MeleeHit = m_Land.FindAction("MeleeHit", throwIfNotFound: true);
+        m_Land_TriggerShooting = m_Land.FindAction("TriggerShooting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -203,6 +223,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Land_Shoot;
     private readonly InputAction m_Land_MousePosition;
     private readonly InputAction m_Land_MeleeHit;
+    private readonly InputAction m_Land_TriggerShooting;
     public struct LandActions
     {
         private @PlayerActionControls m_Wrapper;
@@ -212,6 +233,7 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Land_Shoot;
         public InputAction @MousePosition => m_Wrapper.m_Land_MousePosition;
         public InputAction @MeleeHit => m_Wrapper.m_Land_MeleeHit;
+        public InputAction @TriggerShooting => m_Wrapper.m_Land_TriggerShooting;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -236,6 +258,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @MeleeHit.started -= m_Wrapper.m_LandActionsCallbackInterface.OnMeleeHit;
                 @MeleeHit.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnMeleeHit;
                 @MeleeHit.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnMeleeHit;
+                @TriggerShooting.started -= m_Wrapper.m_LandActionsCallbackInterface.OnTriggerShooting;
+                @TriggerShooting.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnTriggerShooting;
+                @TriggerShooting.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnTriggerShooting;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -255,6 +280,9 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
                 @MeleeHit.started += instance.OnMeleeHit;
                 @MeleeHit.performed += instance.OnMeleeHit;
                 @MeleeHit.canceled += instance.OnMeleeHit;
+                @TriggerShooting.started += instance.OnTriggerShooting;
+                @TriggerShooting.performed += instance.OnTriggerShooting;
+                @TriggerShooting.canceled += instance.OnTriggerShooting;
             }
         }
     }
@@ -266,5 +294,6 @@ public class @PlayerActionControls : IInputActionCollection, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnMeleeHit(InputAction.CallbackContext context);
+        void OnTriggerShooting(InputAction.CallbackContext context);
     }
 }
