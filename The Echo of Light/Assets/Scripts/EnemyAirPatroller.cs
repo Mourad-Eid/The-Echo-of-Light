@@ -86,19 +86,19 @@ public class EnemyAirPatroller : MonoBehaviour
     {
         if (hitInfo.tag == "Player")
         {
+            if (facingRight)
+            {
+                sounds.panStereo = -1;
+            }
+            else
+            {
+                sounds.panStereo = 1;
+            }
             if (playChasing == false)
             {
                 sounds.clip = chasingSound;
                 sounds.minDistance = 0;
                 sounds.maxDistance = 6;
-                if(facingRight)
-                {
-                    sounds.panStereo = -1;
-                }
-                else
-                {
-                    sounds.panStereo = 1;
-                }
                 sounds.Play();
                 playChasing = true;
             }
