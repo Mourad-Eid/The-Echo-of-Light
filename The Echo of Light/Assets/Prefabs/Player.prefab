@@ -117,10 +117,9 @@ GameObject:
   - component: {fileID: 7930361312927505652}
   - component: {fileID: 3075359350147615943}
   - component: {fileID: 2506343298894614715}
-  - component: {fileID: 135336840}
   - component: {fileID: 1648902414}
   m_Layer: 11
-  m_Name: Player
+  m_Name: player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d108de5974fb749919ce79b3931c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTrack: {fileID: 135336840}
 --- !u!114 &1796023993521998474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,102 +294,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
---- !u!82 &135336840
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796023993521998475}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f4c40df1f3b9a0f4f8098941a30df323, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1648902414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,19 +309,19 @@ MonoBehaviour:
   levels:
   - innerRdius: 1
     outerRadius: 1.5
-    soundVolume: 1
+    soundVolume: 0
   - innerRdius: 2
     outerRadius: 2.5
-    soundVolume: 0.8
+    soundVolume: 0
   - innerRdius: 3
     outerRadius: 3.5
-    soundVolume: 0.6
+    soundVolume: 0
   - innerRdius: 4
     outerRadius: 4.5
-    soundVolume: 0.4
+    soundVolume: 0
   - innerRdius: 5
     outerRadius: 5.5
-    soundVolume: 0.2
+    soundVolume: 0
   lightSource: {fileID: 1796023992570062239}
   soundDetectionRadius: 8
   enemyLayer:
