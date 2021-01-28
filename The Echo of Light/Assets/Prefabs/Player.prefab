@@ -54,7 +54,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796023992570062233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.074056625, w: 0.9972541}
   m_LocalPosition: {x: 0.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -88,8 +88,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.5
-  m_PointLightOuterRadius: 2
+  m_PointLightInnerRadius: 2.6733577
+  m_PointLightOuterRadius: 3.3479247
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -118,8 +118,9 @@ GameObject:
   - component: {fileID: 3075359350147615943}
   - component: {fileID: 2506343298894614715}
   - component: {fileID: 135336840}
+  - component: {fileID: 1648902414}
   m_Layer: 11
-  m_Name: player2
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,6 +392,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1648902414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796023993521998475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5483af93b1b9c0540a08e8cae3617960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - innerRdius: 1
+    outerRadius: 1.5
+    soundVolume: 1
+  - innerRdius: 2
+    outerRadius: 2.5
+    soundVolume: 0.8
+  - innerRdius: 3
+    outerRadius: 3.5
+    soundVolume: 0.6
+  - innerRdius: 4
+    outerRadius: 4.5
+    soundVolume: 0.4
+  - innerRdius: 5
+    outerRadius: 5.5
+    soundVolume: 0.2
+  lightSource: {fileID: 1796023992570062239}
+  soundDetectionRadius: 8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  slider: {fileID: 0}
 --- !u!1 &4827129050003075792
 GameObject:
   m_ObjectHideFlags: 0
