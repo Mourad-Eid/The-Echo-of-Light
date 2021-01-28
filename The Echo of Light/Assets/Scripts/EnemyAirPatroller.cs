@@ -149,11 +149,6 @@ public class EnemyAirPatroller : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, soundRadius);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-            sounds.volume = 0;
-    }
 
     void OnSoundRadiusChange(float newSoundRadius)
     {
