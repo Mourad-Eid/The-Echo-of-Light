@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerRangedAttack : MonoBehaviour
 {
-
     PlayerInput input;
     Camera camera;
     [Header("Attack")]
@@ -14,7 +13,10 @@ public class PlayerRangedAttack : MonoBehaviour
     [SerializeField] float offset;
     [SerializeField] float bulletForce=15f;
     private float lastHitTime;
-    
+    [Header("Ability to Shoot")]
+    bool canShoot=false;
+    [SerializeField] float rotateToNormalSpeed;
+    Quaternion originalRotation;
    
     // Start is called before the first frame update
     void Start()
@@ -22,25 +24,40 @@ public class PlayerRangedAttack : MonoBehaviour
         input = GetComponentInParent<PlayerInput>();
         camera = Camera.main;
         input.playerActionControls.Land.Shoot.performed += _ => Shoot();
+        input.playerActionControls.Land.TriggerShooting.performed += _ => ToggleShootActivation();
+        originalRotation = transform.rotation;
     }
 
     void Shoot()
     {
-        if (Time.time > (1 / hitRate) + lastHitTime)
-        {           
-            lastHitTime = Time.time;
-            GameObject bullet= Instantiate(bulletPrefab, firingPosition.position, transform.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(firingPosition.right * bulletForce, ForceMode2D.Impulse);
+       if(canShoot)
+        {
+            if (Time.time > (1 / hitRate) + lastHitTime)
+            {
+                lastHitTime = Time.time;
+                GameObject bullet = Instantiate(bulletPrefab, firingPosition.position, transform.rotation);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(firingPosition.right * bulletForce, ForceMode2D.Impulse);
+            }
         }
         
     }
     // Update is called once per frame
     void Update()
     {
+        if(!canShoot) 
+        {
+            transform.rotation =originalRotation ;
+            return;
+        }
         Vector2 mousePos = input.playerActionControls.Land.MousePosition.ReadValue<Vector2>();
         Vector3 difference = camera.ScreenToWorldPoint(mousePos) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
+    }
+
+    void ToggleShootActivation()
+    {
+        canShoot = !canShoot;       
     }
 }
