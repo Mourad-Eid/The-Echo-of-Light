@@ -21,7 +21,7 @@ public class EnemyAirPatroller : MonoBehaviour
 
     void Start()
     {
-
+        sounds.volume = 0;
     }
 
     // Update is called once per frame
@@ -98,7 +98,7 @@ public class EnemyAirPatroller : MonoBehaviour
             {
                 sounds.clip = chasingSound;
                 sounds.minDistance = 0;
-                sounds.maxDistance = 6;
+                sounds.maxDistance = 15;
                 sounds.Play();
                 playChasing = true;
             }
@@ -124,5 +124,11 @@ public class EnemyAirPatroller : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, rangeRadius);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+            sounds.volume = 0;
     }
 }

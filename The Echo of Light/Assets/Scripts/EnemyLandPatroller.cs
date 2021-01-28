@@ -16,12 +16,14 @@ public class EnemyLandPatroller : MonoBehaviour
 
     [SerializeField] AudioClip walkingSound;
     [SerializeField] AudioClip chasingSound;
+    [SerializeField] AudioClip hitSound;
     [SerializeField] AudioSource sounds;
     bool playWalking = false;
     bool playChasing = false;
 
     void Start()
     {
+        sounds.volume = 0;
     }
 
     // Update is called once per frame
@@ -87,14 +89,24 @@ public class EnemyLandPatroller : MonoBehaviour
     {
         if (hitInfo.tag == "Player")
         {
+            if (facingRight)
+            {
+                sounds.panStereo = -1;
+            }
+            else
+            {
+                sounds.panStereo = 1;
+            }
             if (playChasing == false)
             {
                 sounds.clip = chasingSound;
+                sounds.minDistance = 0;
+                sounds.maxDistance = 15;
                 sounds.Play();
                 playChasing = true;
             }
-        }
             MoveToTarget(hitInfo.transform);
+        }
     }
     void Flip()
     {
@@ -115,5 +127,11 @@ public class EnemyLandPatroller : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, rangeRadius);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+            sounds.volume = 0;
     }
 }

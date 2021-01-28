@@ -17,6 +17,7 @@ public class PlayerSoundLightControl : MonoBehaviour
 
     [SerializeField] Slider slider;
 
+
     void Start()
     {
         

@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 2506343298894614715}
   - component: {fileID: 1648902414}
   m_Layer: 11
-  m_Name: player2
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,21 +309,21 @@ MonoBehaviour:
   levels:
   - innerRdius: 1
     outerRadius: 1.5
-    soundVolume: 0
+    soundVolume: 0.2
   - innerRdius: 2
     outerRadius: 2.5
-    soundVolume: 0
+    soundVolume: 0.4
   - innerRdius: 3
     outerRadius: 3.5
-    soundVolume: 0
+    soundVolume: 0.6
   - innerRdius: 4
     outerRadius: 4.5
-    soundVolume: 0
+    soundVolume: 0.8
   - innerRdius: 5
     outerRadius: 5.5
-    soundVolume: 0
+    soundVolume: 1
   lightSource: {fileID: 1796023992570062239}
-  soundDetectionRadius: 8
+  soundDetectionRadius: 12
   enemyLayer:
     serializedVersion: 2
     m_Bits: 4096
