@@ -17,4 +17,12 @@ public class EventManager : MonoBehaviour
     {
         onChangeSound?.Invoke(newSoundVolume);
     }
+
+    public event Action<int> onChangeTrack;
+
+    public void ChangeTrack(int newTrack)
+    {
+        onChangeTrack?.Invoke(newTrack);
+    }
+
 }

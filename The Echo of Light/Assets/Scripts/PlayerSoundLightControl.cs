@@ -28,6 +28,7 @@ public class PlayerSoundLightControl : MonoBehaviour
     {
         int sliderValue = (int)slider.value - 1;
         EventManager.current.ChangeSound(levels[sliderValue].SoundRadius);
+        EventManager.current.ChangeTrack(sliderValue + 1);
     }
 
 }
