@@ -22,8 +22,9 @@ public class EnemyLandPatroller : MonoBehaviour
     [SerializeField] AudioSource sounds;
     bool playWalking = false;
     bool playChasing = false;
-    float soundVolume=0;
 
+    [Header("Animation")]
+    [SerializeField] Animator anim;
     void Start()
     {
         sounds.volume = 0;
@@ -78,6 +79,7 @@ public class EnemyLandPatroller : MonoBehaviour
     void Patrol()
     {
         playChasing = false;
+        anim.SetBool("isChasing", false);
         if (playWalking == false)
         {
             sounds.clip = walkingSound;
@@ -110,6 +112,7 @@ public class EnemyLandPatroller : MonoBehaviour
     {
         if (hitInfo.tag == "Player")
         {
+            anim.SetBool("isChasing", true);
             if (facingRight)
             {
                 sounds.panStereo = -1;

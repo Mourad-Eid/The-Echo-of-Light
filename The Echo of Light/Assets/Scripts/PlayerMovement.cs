@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector3 colliderOffsetLeft;
     [SerializeField] Vector3 colliderOffsetRight;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] ParticleSystem dust;
 
     [Header("Physics")]
     [SerializeField] float maxSpeed = 7f;
@@ -24,10 +25,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float fallMultiplier = 5f;
 
     [SerializeField] Animator anim;
+    [SerializeField] ParticleSystem fire;
     
     void Start()
     {
         input.playerActionControls.Land.Jump.performed += _ => Jump();
+        fire.Play();
     }
 
     void Update()
@@ -37,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         //jump condition
         onGround = Physics2D.Raycast(transform.position + colliderOffsetRight, Vector2.down, groundLength, groundLayer)
             || Physics2D.Raycast(transform.position - colliderOffsetLeft, Vector2.down, groundLength, groundLayer);
+        anim.SetFloat("HorizontalVelocity", Mathf.Abs(movementInput));
+        
     }
 
     private void FixedUpdate()
@@ -59,7 +64,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (onGround)
         {
+            anim.SetTrigger("Jump");
             rb2d.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            dust.Play();
         }
     }
     void Flip()

@@ -24,9 +24,13 @@ public class PlayerRangedAttack : MonoBehaviour
     {
         if (Time.time > (1 / hitRate) + lastHitTime)
         {
-            lastHitTime = Time.time;
-            Instantiate(bulletPrefab, firingPosition.position, firingPosition.rotation);
+            anim.SetTrigger("RangedAttack");          
         }
 
+    }
+    public void FireJumpInAnimator()
+    {
+        lastHitTime = Time.time;
+        Instantiate(bulletPrefab, firingPosition.position, firingPosition.rotation);
     }
 }
