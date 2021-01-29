@@ -20,16 +20,5 @@ public class PlayerInput : MonoBehaviour
         playerActionControls.Disable();
     }
 
-    private void Update()
-    {
-        //if(Input.GetKeyDown(KeyCode.A))
-        //{
-        //    mainTrack.panStereo = -1;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    mainTrack.panStereo = 1;
-        //}
-    }
 
 }

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7915699408038183655}
   - component: {fileID: 7915699408038183652}
-  - component: {fileID: 7915699408038183653}
   - component: {fileID: 2637007620057973073}
   - component: {fileID: 5464166437616093509}
+  - component: {fileID: 2761350299157196754}
   m_Layer: 12
-  m_Name: DashingPat
+  m_Name: DashingBat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,28 +54,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
+  soundRadius: 0
   flyingSound: {fileID: 8300000, guid: bc485af860adf4c4999954ad684fa48e, type: 3}
   chasingSound: {fileID: 8300000, guid: 05d8e66c99986c04baa0a6678766ab76, type: 3}
   sounds: {fileID: 5464166437616093509}
---- !u!95 &7915699408038183653
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915699408038183650}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 89189c38ae1b6dc46a8726f1c6db0f5d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &2637007620057973073
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,6 +170,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &2761350299157196754
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915699408038183650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47732dfd9977bce4ca79c733256a32b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7915699407549973593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,12 +199,12 @@ PrefabInstance:
     - target: {fileID: -8762525692075615354, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.2560584
+      value: -0.2560585
       objectReference: {fileID: 0}
     - target: {fileID: -8762525692075615354, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.69458485
+      value: 0.6945846
       objectReference: {fileID: 0}
     - target: {fileID: -8762525692075615354, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
@@ -278,7 +279,7 @@ PrefabInstance:
     - target: {fileID: -4247058935525283774, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.25608093
+      value: -0.25608116
       objectReference: {fileID: 0}
     - target: {fileID: -4247058935525283774, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
@@ -313,12 +314,12 @@ PrefabInstance:
     - target: {fileID: -3714754003563752079, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.25581256
+      value: -0.25581244
       objectReference: {fileID: 0}
     - target: {fileID: -3714754003563752079, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.6945846
+      value: 0.69458485
       objectReference: {fileID: 0}
     - target: {fileID: -3714754003563752079, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
@@ -403,12 +404,12 @@ PrefabInstance:
     - target: {fileID: 2015102299661748999, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.25674212
+      value: -0.25674284
       objectReference: {fileID: 0}
     - target: {fileID: 2015102299661748999, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.69470274
+      value: 0.6947032
       objectReference: {fileID: 0}
     - target: {fileID: 2015102299661748999, guid: 1e10b418ac71bcd4b8833145d857af25,
         type: 3}

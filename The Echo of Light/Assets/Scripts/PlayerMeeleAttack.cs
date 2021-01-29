@@ -8,7 +8,7 @@ public class PlayerMeeleAttack : MonoBehaviour
     [SerializeField] int hitRate =1;
     [SerializeField] float attackTime;
     private float lastHitTime;
-    
+    [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     void Start()

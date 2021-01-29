@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float linearDrag = 4f;
     [SerializeField] float gravity = 1f;
     [SerializeField] float fallMultiplier = 5f;
+
+    [SerializeField] Animator anim;
     
     void Start()
     {
