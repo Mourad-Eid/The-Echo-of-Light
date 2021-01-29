@@ -116,6 +116,7 @@ MonoBehaviour:
   chasingSound: {fileID: 8300000, guid: 191e78d8642f7cd43913e5fea9127dca, type: 3}
   hitSound: {fileID: 0}
   sounds: {fileID: 1687835061}
+  anim: {fileID: 5716164675740799526}
 --- !u!82 &1687835061
 AudioSource:
   m_ObjectHideFlags: 0

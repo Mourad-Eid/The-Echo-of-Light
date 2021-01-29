@@ -19,8 +19,8 @@ public class PlayerMeeleAttack : MonoBehaviour
     void AttackMelee()
     {
         if (Time.time > (1 / hitRate) + lastHitTime)
-        {
-            StartCoroutine(Attack(attackTime));
+        {                       
+            anim.SetTrigger("MeleeAttack");
         }
     }
     IEnumerator Attack(float attackTime)
@@ -28,5 +28,10 @@ public class PlayerMeeleAttack : MonoBehaviour
         attackBox.SetActive(true);
         yield return new WaitForSeconds(attackTime);
         attackBox.SetActive(false);
+    }
+
+    public void FireAttackInAnimator()
+    {
+        StartCoroutine(Attack(attackTime));
     }
 }

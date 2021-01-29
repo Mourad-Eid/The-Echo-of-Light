@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         //jump condition
         onGround = Physics2D.Raycast(transform.position + colliderOffsetRight, Vector2.down, groundLength, groundLayer)
             || Physics2D.Raycast(transform.position - colliderOffsetLeft, Vector2.down, groundLength, groundLayer);
+        anim.SetFloat("HorizontalVelocity", Mathf.Abs(movementInput));
+        
     }
 
     private void FixedUpdate()
@@ -59,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (onGround)
         {
+            anim.SetTrigger("Jump");
             rb2d.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
     }
