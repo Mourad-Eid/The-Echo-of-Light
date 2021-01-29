@@ -10,15 +10,10 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
-    public void HandleEndGameCloseButton()
+    public void LoadMainMenu()
     {
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
-    }
-    public void HandleEndGamePlayAgainButton()
-    {
-        Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
     }
 
     public void CloseGame()
