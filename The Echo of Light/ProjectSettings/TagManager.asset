@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Barrier
   - Enemy
+  - AttackBox
   layers:
   - Default
   - TransparentFX
